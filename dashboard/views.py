@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from online_learning_system.settings import EMAIL_HOST_USER
 
 from accounts.decorators import *
 from main.models import Course, Enrollment
@@ -103,6 +104,7 @@ def contact(request):
             status = send_mail(
                 "A-Siraj Help Center",
                 message,
+                from_email=EMAIL_HOST_USER,
                 recipient_list=["nabeelrana892gmail.com"],
             )
             if status != 0:

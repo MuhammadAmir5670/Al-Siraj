@@ -148,7 +148,7 @@ LOGIN_URL = "login"
 
 
 # defining media root
-MEDIA_ROOT = os.path.join(BASE_DIR, "static/images/user_profile_images")
+MEDIA_ROOT = os.path.join(BASE_DIR, "static/images/user_profile_images/")
 
 
 # Email Backend system

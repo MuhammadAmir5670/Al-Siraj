@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib import messages
 from django.core.mail import send_mail
+from online_learning_system.settings import EMAIL_HOST_USER
 
 # Create your views here.
 from main.models import (
@@ -129,6 +130,7 @@ def send_mail_to(request, to=0):
         status = send_mail(
             subject,
             message,
+            from_email=EMAIL_HOST_USER,
             recipient_list=receivers,
         )
         if status != 0:
