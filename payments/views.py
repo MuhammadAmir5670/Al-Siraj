@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.template.loader import render_to_string
 
 from .models import Transaction
 from accounts.decorators import allowed_users, only_admin
@@ -100,6 +101,15 @@ def payment_status(request, enrollment_id, transaction_id):
     if transaction.status:
         enrollment.active = True
         enrollment.save()
+        # sending course enrollment confirmation message to the user
+        message = render_to_string(
+            "payments/payment_email.html",
+            {
+                "enrollment": enrollment,
+                "transaction": transaction,
+            },
+        )
+        request.user.email_user("AL-Siraj Course Confirmation", message)
         # adding user to the enrolled_student group
         add_user_to_group(group_id=2, user_id=request.user.id)
 

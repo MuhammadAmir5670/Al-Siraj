@@ -103,8 +103,7 @@ def contact(request):
             status = send_mail(
                 "A-Siraj Help Center",
                 message,
-                from_email=user_email,
-                recipient_list=["al.siraj5670@gmail.com"],
+                recipient_list=["nabeelrana892gmail.com"],
             )
             if status != 0:
                 messages.success(

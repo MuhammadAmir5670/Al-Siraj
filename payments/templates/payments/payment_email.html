@@ -1,0 +1,17 @@
+{% autoescape off %}
+Assalam-o-Alaikum,
+===================================================
+You have sucessfuly enrolled the course: {{ enrollment.course }}
+please go to dashboard and request the admin for a meeting to discuss the time table. our servies are availble to you 24
+hours.
+Thanks For Al-Siraj
+
+Transaction Details:
+Reference Number: {{ transaction.transaction_retreival_reference_no }}</>
+Transaction ID: {{ transaction.transaction_id }} </pre>
+Total Amount: {{ transaction.total_amount }} PKR</pre>
+Paid Amount: {{ transaction.paid_amount }} PKR</pre>
+Payment Status: Success
+
+===================================================
+{% endautoescape %}

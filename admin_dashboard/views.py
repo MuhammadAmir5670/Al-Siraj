@@ -129,7 +129,6 @@ def send_mail_to(request, to=0):
         status = send_mail(
             subject,
             message,
-            from_email="al.siraj5670@gmail.com",
             recipient_list=receivers,
         )
         if status != 0:
