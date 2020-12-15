@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Sign Up
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'forms.css' %}">
+{% endblock stylesheet %}
+
+
+{% block body %}
+<div class="container text-dark">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7 col-12 col-sm-12">
+                    <div class="p-3 p-sm-4 p-md-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        {% include 'includes/form.html' %}
+                        <button type="submit" form="general-form" class="btn btn-primary btn-block form-rounded">Create
+                            an
+                            account</button>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="{% url 'password_reset' %}">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="{% url 'resend_activation_mail' %}">Resend Account Activation
+                                Link?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="{% url 'login' %}">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+{% endblock body %}

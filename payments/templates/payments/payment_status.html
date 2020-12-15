@@ -1,0 +1,88 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | Courses
+{% endblock title %}
+
+
+{% block stylesheet %}
+<style>
+    .jsformWrapper {
+        border: 1px solid rgba(196, 21, 28, 0.50);
+        padding: 2rem;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 2px;
+        margin-top: 2rem;
+        box-shadow: 0 7px 5px #eee;
+    }
+
+    @keyframes spinner-border {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spinner-border {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: text-bottom;
+        border: .25em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner-border .75s linear infinite;
+        animation: spinner-border .75s linear infinite;
+    }
+
+    .spinner-border-sm {
+        height: 1rem;
+        border-width: .2em;
+    }
+</style>
+{% endblock stylesheet %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    {% if transaction.status %}
+                    <!-- Payment successful -->
+                    <h3 class="text-success h3">Your Payment has been Successful</h3>
+                    {% else %}
+                    <h3 class="text-danger h3">Your Payment has Failed</h3>
+                    {% endif %}
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    {% if transaction.status %}
+                    <!-- Payment successful -->
+                    <h5 class="h5 text-secondary mb-3">Payment Information</h5>
+                    <pre><b>Reference Number:</b>        {{ transaction.transaction_retreival_reference_no }}</pre>
+                    <pre><b>Transaction ID:</b>          {{ transaction.transaction_id }} </pre>
+                    <pre><b>Total Amount:</b>            {{ transaction.total_amount }} PKR</pre>
+                    <pre><b>Paid Amount:</b>             {{ transaction.paid_amount }} PKR</pre>
+                    <pre><b>Payment Status:</b>          Success</pre>
+                    {% else %}
+                    <!-- displaying the non form field errors -->
+                    {% for message in messages %}
+                    <div {% if message.tags == "warning"  %} class="alert alert-danger" {% else %}
+                        class="alert alert-{{ message.tags }}" {% endif %} role="alert">
+                        <strong>{% if message.tags == "warning"  %} Error {% else %} {{ message.tags }}
+                            {% endif %}</strong>
+                        <p>{{ message }}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

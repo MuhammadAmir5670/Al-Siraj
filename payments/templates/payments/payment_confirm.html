@@ -1,0 +1,164 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | Courses
+{% endblock title %}
+
+
+{% block stylesheet %}
+<style>
+    .jsformWrapper {
+        border: 1px solid rgba(196, 21, 28, 0.50);
+        padding: 2rem;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 2px;
+        margin-top: 2rem;
+        box-shadow: 0 7px 5px #eee;
+    }
+
+    @keyframes spinner-border {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spinner-border {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: text-bottom;
+        border: .25em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner-border .75s linear infinite;
+        animation: spinner-border .75s linear infinite;
+    }
+
+    .spinner-border-sm {
+        height: 1rem;
+        border-width: .2em;
+    }
+</style>
+{% endblock stylesheet %}
+
+
+{% block sidebar_items %}
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Board
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-university"></i>
+        <span>Admission</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Cousrses</h6>
+            <a class="collapse-item" href="{% url 'dashboard:courses_data' 1 %}">quran with tajweed</a>
+            <a class="collapse-item" href="{% url 'dashboard:courses_data' 2 %}">islam for kids</a>
+            <a class="collapse-item" href="{% url 'dashboard:courses_data' 3 %}">noorani qauida</a>
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+        aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-tag"></i>
+        <span>Take Trial</span>
+    </a>
+    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Courses</h6>
+            <a class="collapse-item" href="">quran with tajweed</a>
+            <a class="collapse-item" href="">islam for kids</a>
+            <a class="collapse-item" href="">noorani qauida</a>
+        </div>
+    </div>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Addons
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false"
+        aria-controls="collapsePages">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Quick Links</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Links</h6>
+            <a class="collapse-item" href="{% url 'main:index' %}">Home</a>
+            <a class="collapse-item" href="{% url 'main:about' %}">About</a>
+            <a class="collapse-item" href="{% url 'dashboard:courses' %}">Courses</a>
+            <a class="collapse-item" href="{% url 'main:contact' %}">Contact</a>
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Change Password -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'my_account' %}">
+        <i class="fas fa-fw fa-user"></i>
+        <span>Profile</span></a>
+</li>
+
+<!-- Nav Item - Logout -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">
+        <i class="fas fa-sign-out-alt fa-sm fa-fw"></i>
+        <span>Logout</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
+
+</ul>
+{% endblock sidebar_items %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h3 class="h3 text-danger">Payment Failed!</h3>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    {% for message in messages %}
+                    <div {% if message.tags == "warning"  %} class="alert alert-danger" {% else %}
+                        class="alert alert-{{ message.tags }}" {% endif %} role="alert">
+                        <strong>{% if message.tags == "warning"  %} Error {% else %} {{ message.tags }}
+                            {% endif %}</strong>
+                        <p>{{ message }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

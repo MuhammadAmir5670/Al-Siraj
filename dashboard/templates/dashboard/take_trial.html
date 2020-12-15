@@ -1,0 +1,73 @@
+{% extends 'd_base.html' %}
+
+
+
+{% block title %}
+@{{request.user.username}} | Take Trial
+{% endblock title %}
+
+
+{% block page_content %}
+<div class="container text-dark">
+    <h1 class="h1">Select <span class="text-secondary">Course</span></h1>
+    <p class="mb-3 ">Our AL-SIRAJ ONLINE LEARNING ACADEMY offers trial classes to our students. Teaching the best is our
+        culture so
+        book your trial lesson with us by contacting us. We do not charge for these trial classes. They are free for
+        you. Therefore, avail of the chance and attend these trial classes free for two days.</p>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card border-left-secondary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Quran With Tajweed</div>
+                            <a href="{% url 'dashboard:trial_confirm' 1 %}"
+                                class="card-link h5 mb-0 font-weight-bold text-secondary">Take Trial</a>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mt-4 mt-lg-0">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Islam For Kids</div>
+                            <a href="{% url 'dashboard:trial_confirm' 2 %}"
+                                class="card-link stretched-link h5 mb-0 font-weight-bold text-success">Take
+                                Trial</a>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mt-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Islam For Kids</div>
+                            <a href="{% url 'dashboard:trial_confirm' 3 %}"
+                                class="card-link stretched-link h5 mb-0 font-weight-bold text-danger">Take
+                                Trial</a>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

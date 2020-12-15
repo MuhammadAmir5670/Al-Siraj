@@ -1,0 +1,176 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | {{ name }}
+{% endblock title %}
+
+
+{% block page_content %}
+<div class="container text-dark mb-5">
+    <h1 class="h1 my-4 text-capitalize">{{ name }}</h1>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-USA-tab" data-toggle="tab" href="#nav-USA" role="tab"
+                aria-controls="nav-USA" aria-selected="true">USA</a>
+            <a class="nav-item nav-link" id="nav-Europe-tab" data-toggle="tab" href="#nav-Europe" role="tab"
+                aria-controls="nav-Europe" aria-selected="false">Europe</a>
+            <a class="nav-item nav-link" id="nav-Canada-tab" data-toggle="tab" href="#nav-Canada" role="tab"
+                aria-controls="nav-Canada" aria-selected="false">Canada</a>
+            <a class="nav-item nav-link" id="nav-UK-tab" data-toggle="tab" href="#nav-UK" role="tab"
+                aria-controls="nav-UK" aria-selected="false">UK</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-USA" role="tabpanel" aria-labelledby="nav-USA-tab">
+            <div class="row p-0 p-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <img src="{% static 'images/usa-img.png' %}" width="100%" height="100%" alt="">
+                </div>
+                <div class="col-12 col-md-6 col-lg-8 col-xl-9 p-4">
+                    <h3 class="h3">For <span class="text-secondary">USA</span></h3>
+                    <p>Our AL-SIRAJ ONLINE LEARNING ACADEMY offers trial classes to our students. Teaching the best is
+                        our culture so book your trial lesson with us by contacting us. We do not charge for these trial
+                        classes. They are free for you. Therefore, avail of the chance and attend these trial classes
+                        free for two days.</p>
+                </div>
+            </div>
+            <table class="table table-bordered table-light">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th scope="col">Classes</th>
+                        <th scope="col">Class Duration</th>
+                        <th scope="col">Mothly Fees</th>
+                        <th scope="col">Fees in Rupees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course_in_country in courses.US %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{ course_in_country.classes_per_week }} days per weer</td>
+                        <td>{{ course_in_country.class_duration }} Minutes</td>
+                        <td>{{ course_in_country.pricing }} $</td>
+                        <td>{{ course_in_country.to_PKR }} Rupees</td>
+                        <td><a href="{% url 'main:contact' %}?id={{course_in_country.id}}">Get Admission</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="nav-Europe" role="tabpanel" aria-labelledby="nav-Europe-tab">
+            <div class="row p-0 p-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <img src="{% static 'images/europe-img.png' %}" width="100%" height="100%" alt="">
+                </div>
+                <div class="col-12 col-md-6 col-lg-8 col-xl-9 p-4">
+                    <h3 class="h3">For <span class="text-secondary">Europe</span></h3>
+                    <p>Our AL-SIRAJ ONLINE LEARNING ACADEMY offers trial classes to our students. Teaching the best is
+                        our culture so book your trial lesson with us by contacting us. We do not charge for these trial
+                        classes. They are free for you. Therefore, avail of the chance and attend these trial classes
+                        free for two days.</p>
+                </div>
+            </div>
+            <table class="table table-bordered table-light">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th scope="col">Classes Per Week</th>
+                        <th scope="col">Class Duration</th>
+                        <th scope="col">Mothly Fees</th>
+                        <th scope="col">Fees in Rupees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course_in_country in courses.EU %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{ course_in_country.classes_per_week }} Minutes</td>
+                        <td>{{ course_in_country.class_duration }}</td>
+                        <td>{{ course_in_country.pricing }} €</td>
+                        <td>{{ course_in_country.to_PKR }} Rupees</td>
+                        <td><a href="{% url 'main:contact' %}?id={{course_in_country.id}}">Get Admission</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="nav-Canada" role="tabpanel" aria-labelledby="nav-Canada-tab">
+            <div class="row p-0 p-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <img src="{% static 'images/canada-img.png' %}" width="100%" height="100%" alt="">
+                </div>
+                <div class="col-12 col-md-6 col-lg-8 col-xl-9 p-4">
+                    <h3 class="h3">For <span class="text-secondary">Canada</span></h3>
+                    <p>Our AL-SIRAJ ONLINE LEARNING ACADEMY offers trial classes to our students. Teaching the best is
+                        our culture so book your trial lesson with us by contacting us. We do not charge for these trial
+                        classes. They are free for you. Therefore, avail of the chance and attend these trial classes
+                        free for two days.</p>
+                </div>
+            </div>
+            <table class="table table-bordered table-light">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th scope="col">Classes Per Week</th>
+                        <th scope="col">Class Duration</th>
+                        <th scope="col">Mothly Fees</th>
+                        <th scope="col">Fees in Rupees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course_in_country in courses.CA %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{ course_in_country.classes_per_week }} Minutes</td>
+                        <td>{{ course_in_country.class_duration }}</td>
+                        <td>{{ course_in_country.pricing }} $</td>
+                        <td>{{ course_in_country.to_PKR }} Rupees</td>
+                        <td><a href="{% url 'main:contact' %}?id={{course_in_country.id}}">Get Admission</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="nav-UK" role="tabpanel" aria-labelledby="nav-UK-tab">
+            <div class="row p-0 p-lg-4">
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <img src="{% static 'images/uk-img.png' %}" width="100%" height="100%" alt="">
+                </div>
+                <div class="col-12 col-md-6 col-lg-8 col-xl-9 p-4">
+                    <h3 class="h3">For <span class="text-secondary">UK</span></h3>
+                    <p>Our AL-SIRAJ ONLINE LEARNING ACADEMY offers trial classes to our students. Teaching the best is
+                        our culture so book your trial lesson with us by contacting us. We do not charge for these trial
+                        classes. They are free for you. Therefore, avail of the chance and attend these trial classes
+                        free for two days.</p>
+                </div>
+            </div>
+            <table class="table table-bordered table-light">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th scope="col">Classes Per Week</th>
+                        <th scope="col">Class Duration</th>
+                        <th scope="col">Mothly Fees</th>
+                        <th scope="col">Fees in Rupees</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course_in_country in courses.UK %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{ course_in_country.classes_per_week }} Minutes</td>
+                        <td>{{ course_in_country.class_duration }}</td>
+                        <td>{{ course_in_country.pricing }} £</td>
+                        <td>{{ course_in_country.to_PKR }} Rupees</td>
+                        <td><a href="{% url 'main:contact' %}?id={{course_in_country.id}}">Get Admission</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

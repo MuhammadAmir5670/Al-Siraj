@@ -1,0 +1,29 @@
+.bg-login-image {
+  background: url($login-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-register-image {
+  background: url($register-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-password-image {
+  background: url($password-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.bg-mosque-image {
+  background: url('../images/mosque-bg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+
+.form-rounded{
+  border-radius: 1.6em;
+}
+

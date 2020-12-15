@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'forms.css' %}">
+{% endblock stylesheet %}
+
+
+{% block body %}
+
+<div class="container text-dark">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-3 p-sm-4 p-md-5">
+                                <div class="text-center">
+                                    <h1 class="h3 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <!-- displaying the non form field errors -->
+                                {% for message in messages %}
+                                <div {% if message.tags == "warning"  %} class="alert alert-danger" {% else %}
+                                    class="alert alert-{{ message.tags }}" {% endif %} role="alert">
+                                    <strong>{% if message.tags == "warning"  %} Error {% else %} {{ message.tags }}
+                                        {% endif %}</strong>
+                                    <p>{{ message }}</p>
+                                </div>
+                                {% endfor %}
+
+                                <!-- form fields -->
+                                <form action="" method="POST" id="general-form" novalidate>
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_username">Username</label>
+                                        <input type="text" name="username" autofocus autocapitalize="none"
+                                            autocomplete="username" maxlength="150" class="form-control form-rounded"
+                                            required id="id_username" placeholder="Nabeel_chuadry">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="id_password">Password</label>
+                                        <input type="password" name="password" autocomplete="current-password"
+                                            class="form-control form-rounded" required id="id_password"
+                                            placeholder="123*******">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block form-rounded">Login</button>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="{% url 'password_reset' %}">Forgot Password?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" href="{% url 'resend_activation_mail' %}">Resend Account Activation
+                                        Link?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" href="{% url 'sign_up' %}">Create an Account!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

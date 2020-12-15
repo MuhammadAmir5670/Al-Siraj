@@ -1,0 +1,128 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | Payment
+{% endblock title %}
+
+
+{% block stylesheet %}
+<style>
+    .jsformWrapper {
+        border: 1px solid rgba(196, 21, 28, 0.50);
+        padding: 2rem;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 2px;
+        margin-top: 2rem;
+        box-shadow: 0 7px 5px #eee;
+    }
+
+    @keyframes spinner-border {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spinner-border {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: text-bottom;
+        border: .25em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner-border .75s linear infinite;
+        animation: spinner-border .75s linear infinite;
+    }
+
+    .spinner-border-sm {
+        height: 1rem;
+        border-width: .2em;
+    }
+</style>
+{% endblock stylesheet %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="col-3 col-md-4 col-lg-3 col-xl-2">
+                        <img src="{% static 'images/jazzcash-logo.png' %}" width="100%" height="100%" alt="">
+                    </div>
+                    <div class="col-9 col-md-8 col-lg-9 col-xl-10 p-4">
+                        <h4 class="m-0 h4 font-weight-bold text-primary">Pay With Jazzcash</h6>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <h3 class="text-danger text-center">Redirecting To JazzCash....</h3>
+
+                    <div class="jsformWrapper text-center">
+                        <div class="spinner-border text-danger" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <form name="jsform" method="post"
+                            action="https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform/"
+                            id="pp_form">
+
+                            <input hidden type="text" name="pp_Version" id="pp_Version"
+                                value="{{ post_data.pp_Version }}">
+                            <input hidden type="text" name="pp_IsRegisteredCustomer" id="pp_IsRegisteredCustomer"
+                                value="{{ post_data.pp_IsRegisteredCustomer }}">
+                            <input hidden type="text" name="pp_TxnType" value="{{ post_data.pp_TxnType }}">
+                            <input hidden type="text" name="pp_TokenizedCardNumber"
+                                value="{{ post_data.pp_TokenizedCardNumber }}">
+                            <input hidden type="text" name="pp_CustomerID" value="{{ post_data.pp_CustomerID }}">
+                            <input hidden type="text" name="pp_CustomerEmail" value="{{ post_data.pp_CustomerEmail }}">
+                            <input hidden type="text" name="pp_CustomerMobile"
+                                value="{{ post_data.pp_CustomerMobile }}">
+                            <input hidden type="text" name="pp_MerchantID" value="{{ post_data.pp_MerchantID }}">
+                            <input hidden type="text" name="pp_Language" value="{{ post_data.pp_Language }}">
+                            <input hidden type="text" name="pp_SubMerchantID" value="{{ post_data.pp_SubMerchantID }}">
+                            <input hidden type="text" name="pp_Password" value="{{ post_data.pp_Password }}">
+                            <input hidden type="text" name="pp_TxnRefNo" id="pp_TxnRefNo"
+                                value="{{ post_data.pp_TxnRefNo }}">
+                            <input hidden type="text" name="pp_Amount" value="{{ post_data.pp_Amount }}">
+                            <input hidden type="text" name="pp_DiscountedAmount"
+                                value="{{ post_data.pp_DiscountedAmount }}">
+                            <input hidden type="text" name="pp_DiscountBank" value="{{ post_data.pp_DiscountBank }}">
+                            <input hidden type="text" name="pp_TxnCurrency" value="{{ post_data.pp_TxnCurrency }}">
+                            <input hidden type="text" name="pp_TxnDateTime" id="pp_TxnDateTime"
+                                value="{{ post_data.pp_TxnDateTime }}">
+                            <input hidden type="text" name="pp_TxnExpiryDateTime" id="pp_TxnExpiryDateTime"
+                                value="{{ post_data.pp_TxnExpiryDateTime }}">
+                            <input hidden type="text" name="pp_BillReference" value="{{ post_data.pp_BillReference }}">
+                            <input hidden type="text" name="pp_Description" value="{{ post_data.pp_Description }}">
+                            <input hidden type="text" name="pp_ReturnURL" value="{{ post_data.pp_ReturnURL }}">
+                            <input hidden type="text" name="pp_SecureHash" value="{{ post_data.pp_SecureHash }}">
+                            <input hidden type="text" name="ppmpf_1" value="1">
+                            <input hidden type="text" name="ppmpf_2" value="2">
+                            <input hidden type="text" name="ppmpf_3" value="3">
+                            <input hidden type="text" name="ppmpf_4" value="4">
+                            <input hidden type="text" name="ppmpf_5" value="5">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
+
+
+{% block script %}
+<script>
+    $(document).ready(function () {
+        submitForm()
+    })
+    function submitForm() {
+        $('#pp_form').submit()
+    }
+</script>
+
+{% endblock script %}

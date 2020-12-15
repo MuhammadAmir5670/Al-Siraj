@@ -1,0 +1,250 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | Payment
+{% endblock title %}
+
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <img src="{% static 'images/jazzcash-logo.png' %}" width="100%" height="100%" alt="">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-8 col-xl-9 p-4">
+                        <h2 class="h2 text-danger mb-2 font-weight-bold text-primary">Pay With Jazzcash</h2>
+                        <h6 class="h6">JazzCash HTTP POST (Page Redirection) Testing</h6>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="jsformWrapper">
+                        <form name="jsform" method="post"
+                            action="https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform/">
+
+                            <!-- PP API Version Number -->
+                            <div class="form-group">
+                                <label for="pp_Version">pp_Version</label>
+                                <select class="form-control" name="pp_Version" id="pp_Version">
+                                    <option value="2.0" selected="">2.0</option>
+                                </select>
+                            </div>
+                            <!-- User Status -->
+                            <div class="form-group">
+                                <label for="pp_IsRegisteredCustomer">pp_IsRegisteredCustomer</label>
+                                <select class="form-control" name="pp_IsRegisteredCustomer"
+                                    id="pp_IsRegisteredCustomer">
+                                    <option value="Yes" selected="">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <!-- Transaction Type -->
+                            <div class="form-group">
+                                <label for="pp_TxnType">pp_TxnType: </label>
+                                <select class="form-control" name="pp_TxnType" id="pp_TxnType">
+                                    <option value="MPAY" selected="">visa or master Card</option>
+                                    <option value="MWALLET">Jazzcash Mobile Account</option>
+                                    <option value="OTC">Voucher Payment</option>
+                                </select>
+                            </div>
+
+
+                            <!-- Tokenized Card Number -->
+                            <div class="form-group">
+                                <label class="active">pp_TokenizedCardNumber: </label>
+                                <input class="form-control" type="text" name="pp_TokenizedCardNumber"
+                                    value="{{ post_data.pp_TokenizedCardNumber }}">
+                            </div>
+
+
+                            <!-- Customer Info - ID -->
+                            <div class="form-group">
+                                <label for="pp_CustomerID">pp_CustomerID: </label>
+                                <input class="form-control" type="text" id="pp_CustomerID" name="pp_CustomerID"
+                                    value="{{ post_data.pp_CustomerID }}">
+                            </div>
+
+                            <!-- Customer Info - Email -->
+                            <div class="form-group">
+                                <label for="pp_CustomerEmail">pp_CustomerEmail: </label>
+                                <input class="form-control" type="text" name="pp_CustomerEmail" id="pp_CustomerEmail"
+                                    value="{{ post_data.pp_CustomerEmail }}">
+                            </div>
+
+
+                            <!-- Customer Info - Mobile -->
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Example label</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput"
+                                    placeholder="Example input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pp_CustomerMobile">pp_CustomerMobile: </label>
+                                <input class="form-control" type="text" name="pp_CustomerMobile" id="pp_CustomerMobile"
+                                    value="{{ post_data.pp_CustomerMobile }}">
+                            </div>
+
+                            <!-- Merchent Details - Info -->
+                            <div class="form-group">
+                                <label for="pp_MerchantID">pp_MerchantID: </label>
+                                <input class="form-control" type="text" name="pp_MerchantID" id="pp_MerchantID"
+                                    value="{{ post_data.pp_MerchantID }}">
+                            </div>
+
+
+                            <!-- Language -->
+                            <div class="form-group">
+                            </div>
+                            <label for="pp_Language">pp_Language: </label>
+                            <input class="form-control" type="text" name="pp_Language" id="pp_Language"
+                                value="{{ post_data.pp_Language }}">
+
+                            <!-- Sub Merchent Id -->
+
+                            <div class="form-group">
+                                <label for="pp_SubMerchantID">pp_SubMerchantID: </label>
+                                <input class="form-control" type="text" name="pp_SubMerchantID" id="pp_SubMerchantID"
+                                    value="{{ post_data.pp_SubMerchantID }}">
+                            </div>
+
+                            <!-- Merchent Password -->
+                            <div class="form-group">
+                                <label for="pp_Password">pp_Password: </label>
+                                <input class="form-control" type="text" name="pp_Password" id="pp_Password"
+                                    value="{{ post_data.pp_Password }}">
+                            </div>
+
+                            <!-- Tansaction ID -->
+                            <div class="form-group">
+                                <label for="pp_TxnRefNo">pp_TxnRefNo: </label>
+                                <input class="form-control" type="text" name="pp_TxnRefNo" id="pp_TxnRefNo"
+                                    value="{{ post_data.pp_TxnRefNo }}">
+                            </div>
+
+                            <!-- Amount To Pay -->
+                            <div class="form-group">
+                                <label for="pp_Amount">pp_Amount: </label>
+                                <input class="form-control" type="text" name="pp_Amount" id="pp_Amount"
+                                    value="{{ post_data.pp_Amount }}">
+                            </div>
+
+                            <!-- Discounted Amount -->
+                            <div class="form-group">
+                                <label for="pp_DiscountedAmount">pp_DiscountedAmount: </label>
+                                <input class="form-control" type="text" name="pp_DiscountedAmount"
+                                    id="pp_DiscountedAmount" value="{{ post_data.pp_DiscountedAmount }}">
+                            </div>
+
+                            <!-- Discounted Bank -->
+                            <div class="form-group">
+                                <label for="pp_DiscountBank">pp_DiscountBank: </label>
+                                <input class="form-control" type="text" name="pp_DiscountBank" id="pp_DiscountBank"
+                                    value="{{ post_data.pp_DiscountBank }}">
+                            </div>
+
+                            <!-- Transaction Currency -->
+                            <div class="form-group">
+                                <label for="pp_TxnCurrency">pp_TxnCurrency: </label>
+                                <input class="form-control" type="text" name="pp_TxnCurrency" id="pp_TxnCurrency"
+                                    value="{{ post_data.pp_TxnCurrency }}">
+                            </div>
+
+                            <!-- Transaction Datetime -->
+                            <div class="form-group">
+                                <label for="pp_TxnDateTime">pp_TxnDateTime: </label>
+                                <input class="form-control" type="text" name="pp_TxnDateTime" id="pp_TxnDateTime"
+                                    value="{{ post_data.pp_TxnDateTime }}">
+                            </div>
+
+                            <!-- Transaction Expiry Time -->
+                            <div class="form-group">
+                                <label for="pp_TxnExpiryDateTime">pp_TxnExpiryDateTime: </label>
+                                <input class="form-control" type="text" name="pp_TxnExpiryDateTime"
+                                    id="pp_TxnExpiryDateTime" value="{{ post_data.pp_TxnExpiryDateTime }}">
+                            </div>
+
+                            <!-- Transaction Bill Reference -->
+                            <div class="form-group">
+                                <label for="pp_BillReference">pp_BillReference: </label>
+                                <input class="form-control" type="text" name="pp_BillReference" id="pp_BillReference"
+                                    value="{{ post_data.pp_BillReference }}">
+                            </div>
+
+                            <!-- Transaction Description -->
+                            <div class="form-group">
+                                <label for="pp_Description">pp_Description: </label>
+                                <input class="form-control" type="text" name="pp_Description" id="pp_Description"
+                                    value="{{ post_data.pp_Description }}">
+                            </div>
+
+                            <!-- Transaction Return URL -->
+                            <div class="form-group">
+                                <label for="pp_ReturnURL">pp_ReturnURL: </label>
+                                <input class="form-control" type="text" name="pp_ReturnURL" id="pp_ReturnURL"
+                                    value="{{ post_data.pp_ReturnURL }}">
+                            </div>
+
+                            <!-- Secure Hash Value -->
+                            <div class="form-group">
+                                <label for="pp_SecureHash">pp_SecureHash: </label>
+                                <input class="form-control" type="text" name="pp_SecureHash" id="pp_SecureHash"
+                                    value="{{ post_data.pp_SecureHash }}">
+                            </div>
+
+                            <!-- Extras -->
+                            <div class="form-group">
+                                <label for="ppmpf_1">ppmpf 1: </label>
+                                <input class="form-control" type="text" name="ppmpf_1" id="ppmpf_1" value="1">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ppmpf_2">ppmpf 2: </label>
+                                <input class="form-control" type="text" id="ppmpf_2" name="ppmpf_2" value="2">
+                            </div>
+
+
+                            <div class="form-group">
+                            </div>
+                            <label for="ppmpf_3">ppmpf 3: </label>
+                            <input class="form-control" type="text" id="ppmpf_3" name="ppmpf_3" value="3">
+
+
+                            <div class="form-group">
+                                <label for="ppmpf_4">ppmpf 4: </label>
+                                <input class="form-control" type="text" id="ppmpf_4" name="ppmpf_4" value="4">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ppmpf_5">ppmpf 5: </label>
+                                <input class="form-control" type="text" id="ppmpf_5" name="ppmpf_5" value="5">
+                            </div>
+
+                            <button type="button" class="btn btn-block btn-success"
+                                onclick="submitForm()">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
+
+
+{% block script %}
+<script>
+    function submitForm() {
+        document.jsform.submit();
+    }
+</script>
+
+{% endblock script %}

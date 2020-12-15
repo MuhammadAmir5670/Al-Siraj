@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+  <title>
+    {% block title %}
+    Al-Siraj
+    {% endblock title %}
+  </title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- SEO meta tags -->
+
+  {% block meta-tags %}
+
+  {% endblock meta-tags %}
+
+  <!-- Bootstrap CSS as well as custom css-->
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'scss/style.css' %}">
+
+  {% block stylesheet %} {% endblock stylesheet %}
+</head>
+
+<body>
+
+  {% block body %}
+
+  <!-- navbar start -->
+  <nav class="navbar navbar-expand-lg py-2 navbar-dark bg-primary">
+    <div class="container">
+      <!-- navbar logo -->
+      <a class="navbar-brand ml-3" href="{% url 'main:index' %}">AL-Siraj</a>
+      <!-- hamburger menu icon -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% block navbar-items %}
+        <!-- navbar items -->
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 align-items-lg-center">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'main:index' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'main:about' %}">About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#!" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Courses</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="{% url 'main:quran_with_tajweed' 1 %}">Quran With Tajweed</a>
+              <a class="dropdown-item" href="{% url 'main:islam_for_kids' 2 %}">Isalm For Kids</a>
+              <a class="dropdown-item" href="{% url 'main:noorani_qauida' 3 %}">Noorani Qaida</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="!#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Fee Chart</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="{% url 'main:courses' 1 %}">Quran With Tajweed</a>
+              <a class="dropdown-item" href="{% url 'main:courses' 2 %}">Isalm For Kids</a>
+              <a class="dropdown-item" href="{% url 'main:courses' 3 %}">Noorani Qaida</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">Contact</a></li>
+
+          {% if user.is_authenticated %}
+          <!-- Nav Item - User Information -->
+          <li class="nav-item dropdown no-arrow ml-0 ml-lg-4">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#!" id="userDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="img-profile rounded-circle" style="width: 30px; height: 30px;"
+                src="{{ request.user.student.profile_image.url }}">
+              <span class="ml-2 mr-1 text-gray-600 small" style="font-size: 18px;">{{request.user.username}}</span>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="{% url 'dashboard:dashboard' request.user.id %}">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Dashboard
+              </a>
+              <a class="dropdown-item" href="{% url 'my_account' %}">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" href="{% url 'password_change' %}">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Change Password
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'logout' %}">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item ml-0 ml-lg-4">
+            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+            <a href="{% url 'sign_up' %}" class="btn btn-outline-secondary">Register</a>
+          </li>
+          {% endif %}
+
+        </ul>
+        <!-- navbar items end -->
+        {% endblock navbar-items %}
+        <!-- navbar form buttons -->
+        <div class="my-lg-0 ml-0 ml-lg-5">
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- header start -->
+  <header class="bg-primary">
+    <div class="container">
+      <!-- outer row -->
+      <div class="row justify-content-center">
+        <!-- hero heading -->
+        <div class="col-12 col-sm-12 col-md-10 col-lg-7  py-5 px-4">
+          {% block header %}
+          header
+          {% endblock header %}
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- header end -->
+
+  {% block main %}
+
+  {% endblock main %}
+
+
+  {% block footer %}
+  <!-- footer start -->
+  <footer class="bg-primary">
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-lg-10 text-center">
+          <h3 class="h3">Quick <span class="color">Links</span></h3>
+          <nav class="nav mt-2 justify-content-center">
+            <a class="nav-link active" href="{% url 'dashboard:courses' %}">Get Admission</a>
+            <a class="nav-link" href="{% url 'dashboard:take_trial' %}">Start Free Trial</a>
+            <a class="nav-link" href="{% url 'main:courses' 1 %}">Pricings</a>
+            <a class="nav-link" href="{% url 'main:courses' 1 %}">Courses</a>
+            <a class="nav-link" href="{% url 'main:contact' %}">Contact Us</a>
+          </nav>
+        </div>
+        <div class="col-12 col-sm-12 col-lg-10 text-center mt-3">
+          <h3 class="h3">Developed By:</h3>
+          <!-- Button trigger modal -->
+          <a class='btn btn-outline-secondary' data-toggle="modal" data-target="#exampleModal">
+            &#8594; Muhammad Amir Abbasi & Hussain Ahmad Khan
+          </a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content text-dark">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Developers</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-3 profile-image">
+                      <img src="{% static 'images/undraw_profile_2.svg' %}" width="100%" height="100%" alt="">
+                    </div>
+                    <div class="col-9 text-left profile-card">
+                      <h5 class="h5">Muhammad Amir Abbasi</h5>
+                      <p class="small">Full Stack Developer</p>
+                      <!-- Social buttons -->
+                      <ul class="list-unstyled list-inline icon-list">
+                        <li class="list-inline-item">
+                          <a href="https://www.facebook.com/daniyal.abbasi.1610/"
+                            class="btn-floating btn btn-circle btn-sm btn-primary text-white">
+                            <i class="fab fa-facebook-f"> </i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="https://twitter.com/Daniyal60990408"
+                            class="btn-floating btn btn-circle btn-sm btn-secondary text-white">
+                            <i class="fab fa-twitter"> </i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="mailto:muhammadamir5670@gmail.com"
+                            class="btn-floating btn btn-circle btn-sm btn-danger text-white">
+                            <i class="fab fa-google"> </i>
+                          </a>
+                        </li>
+                      </ul>
+                      <!-- Social buttons -->
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-3 profile-image">
+                      <img src="{% static 'images/undraw_profile_2.svg' %}" width="100%" height="100%" alt="">
+                    </div>
+                    <div class="col-9 text-left profile-card">
+                      <h5 class="h5">Hussain Ahmad Khan</h5>
+                      <p class="small">Front End Developer</p>
+                      <!-- Social buttons -->
+                      <ul class="list-unstyled list-inline icon-list">
+                        <li class="list-inline-item">
+                          <a href="https://www.facebook.com/hussaunkhan.khan"
+                            class="btn-floating btn btn-circle btn-sm btn-primary text-white">
+                            <i class="fab fa-facebook-f"> </i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn-floating btn btn-circle btn-sm btn-secondary text-white">
+                            <i class="fab fa-twitter"> </i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a class="btn-floating btn btn-circle btn-sm btn-danger text-white">
+                            <i class="fab fa-google"> </i>
+                          </a>
+                        </li>
+                      </ul>
+                      <!-- Social buttons -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center bg-secondary py-3">© 2020 Copyright:
+      <a href="#!" class="text-white ml-1"> Al-Siraj Online Quran Learning Academy</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- footer end -->
+  {% endblock footer %}
+
+  {% endblock body %}
+
+
+
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- Optional JavaScript -->
+  {% block script %}
+  {% endblock script %}
+
+</body>
+
+</html>

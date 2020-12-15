@@ -1,0 +1,25 @@
+{% extends 'd_base.html' %}
+
+{% block title %}
+@{{request.user.username}}
+{% endblock title %}
+
+{% block page_content %}
+
+<!-- displaying messages -->
+{% for message in messages %}
+<div {% if message.tags == "warning"  %} class="alert alert-danger" {% else %} class="alert alert-{{ message.tags }}"
+    {% endif %} role="alert">
+    <strong>{% if message.tags == "warning"  %} Error {% else %} {{ message.tags }} {% endif %}</strong>
+    <p>{{ message }}</p>
+</div>
+{% endfor %}
+
+<div class="row justify-content-center text-dark">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+        {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-primary" form="general-form">Save Changes</button>
+        <a class="btn btn-outline-primary" href="{% url 'main:index' %}" role="button">Cancel</a>
+    </div>
+</div>
+{% endblock page_content %}

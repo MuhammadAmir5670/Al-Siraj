@@ -1,0 +1,48 @@
+{% load widget_tweaks %}
+
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<div class="alert alert-danger" role="alert">
+    <strong>Warning!</strong>
+    <p {% if forloop.last %} class="mb=0" {% endif %}>{{ error }}</p>
+</div>
+{% endfor %}
+{% endif %}
+
+
+<form action="" method="POST" id="general-form" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+
+    <div class="form-group">
+
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {% if form.is_bound %}
+
+        {% if field.errors %}
+
+        {% render_field field class='form-control is-invalid form-rounded' %}
+
+        {% for error in field.errors %}
+        <div class="invalid-feedback">
+            {{error}}
+        </div>
+        {% endfor %}
+        {% else %}
+        {% render_field field class='form-control is-valid form-rounded' %}
+        {% endif %}
+
+        {% else %}
+        {% render_field field class='form-control form-rounded' %}
+        {% endif %}
+
+        {% if field.help_text %}
+        <small class="form-text text-muted">
+            {{ field.help_text|safe }}
+        </small>
+        {% endif %}
+    </div>
+    {% endfor %}
+</form>

@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Al-Siraj Online Quran learning Academy
+{% endblock title %}
+
+
+{% block header %}
+<h1 class="h1 hero-heading">Online <span class="text-secondary">Quran Learning</span><br>
+    With AL SIRAJ</h1>
+<a href="{% url 'dashboard:take_trial' %}" class="btn btn-secondary mt-2 mt-sm-0">Start Free Trial</a>
+<a href="{% url 'dashboard:courses' %}" class="btn btn-outline-secondary mt-2 mt-sm-0">Get Admission</a>
+{% endblock header %}
+
+
+
+{% block main %}
+
+<!-- start main content -->
+
+<!-- about section -->
+<section class="mb-5 mb-lg-0 text-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-5 px-2 p-md-0">
+                <img src="{% static 'images/illustration1.png' %}" width="100%" height="auto" alt="">
+            </div>
+            <div class="col-sm-12 col-lg-7 px-3 d-flex justify-content-center flex-column">
+                <h3 class="h3 mb-3">About <span class="text-secondary">Al Siraj</span></h3>
+                <p>
+                    Al-siraj online Quran learning Academy is one of the internationally leading Learning Quran and
+                    Quran Teaching institutes in the UK , USA and canada. due to its authenticity, quality of service,
+                    convenient and flexible plans and affordable fee structure. Here you can learn Quran with tajweed by
+                    highly qualified, skilled, well trained and extremely capable Male Quran Tutor and scholar; who is
+                    committed and dedicated to broadcast the essence of the Holy Quran.
+                </p>
+                <br> <a href="{% url 'main:about' %}" class="text-italic"><em>Read More</em> &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end about section -->
+
+<!-- section - 2 -->
+<section class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-5 d-flex justify-content-center flex-column px-3 py-5">
+                <h2 class="h2">
+                    DO <span class="text-secondary">YOU</span> OR <br>
+                    <span class="text-secondary">YOUR KIDS</span><br>
+                    WANT TO <br>
+                    <span class="text-secondary">LEARN QURAN?</span>
+                </h2>
+                <p class="text-gray-100">Then what are you waiting for? Register Yourself and Learn
+                    Quran Online while staying at Home!</p>
+                <!-- Button with Icons -->
+                <button class="btn btn-secondary text-left mt-3 rounded-0">
+                    <span class="icon text-white-50 mr-2">
+                        <i class="fas fa-plus"></i>
+                    </span>Online Quran Classes in USA</button>
+                <button class="btn btn-secondary text-left mt-3 rounded-0">
+                    <span class="icon text-white-50 mr-2">
+                        <i class="fas fa-plus"></i>
+                    </span>Every One Cannot Go To Mosque</button>
+                <button class="btn btn-secondary text-left mt-3 rounded-0">
+                    <span class="icon text-white-50 mr-2">
+                        <i class="fas fa-plus"></i>
+                    </span>Learn Online Quran With Tajweed</button>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-7 p-0 p-sm-4">
+                <div class="image-container bg-login-image ">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of section - 2 -->
+
+<!-- section - 3 courses -->
+<section>
+    <div class="container text-dark">
+        <h2 class="text-center h2 pt-5">Courses</h2>
+        <!-- cards -->
+        <div class="row cards-container">
+            <div class="col-12 col-sm-12 col-md-6 col-xl-4 p-sm-5">
+                <div class="card text-center border-0">
+                    <img class="card-img-top" src="{% static 'images/img2.jpg' %}" alt="">
+                    <div class="card-body p-0 pb-4">
+                        <h4 class="h4 card-title mb-3">Quran With Tajweed</h4>
+                        <div class="mb-2">
+                            <a href="{% url 'dashboard:trial_confirm' 1 %}"
+                                class="btn btn-outline-secondary btn-block rounded-0">Take a Trial</a>
+                            <a href="{% url 'main:courses' 1 %}"
+                                class="btn btn-outline-secondary btn-block rounded-0">Get Admission</a>
+                        </div>
+                        <a href="{% url 'main:quran_with_tajweed' 1 %}" class="small">Get More Info About The Course</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-xl-4 p-sm-5">
+                <div class="card text-center border-0">
+                    <img class="card-img-top" src="{% static 'images/img2.jpg' %}" alt="">
+                    <div class="card-body p-0 pb-4">
+                        <h4 class="h4 card-title mb-3">Islam For Kids</h4>
+                        <div class="mb-2">
+                            <a href="{% url 'dashboard:trial_confirm' 2 %}"
+                                class="btn btn-outline-secondary btn-block rounded-0">Take a Trial</a>
+                            <a href="{% url 'main:courses' 2 %}"
+                                class="btn btn-outline-secondary btn-block rounded-0">Get
+                                Admission</a>
+                        </div>
+                        <a href="{% url 'main:islam_for_kids' 2 %}" class="small">Get More Info About The Course</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-xl-4 p-sm-5">
+                <div class="card text-center border-0">
+                    <img class="card-img-top" src="{% static 'images/img2.jpg' %}" alt="">
+                    <div class="card-body p-0 pb-4">
+                        <h4 class="h4 card-title mb-3">Noorani Qauida</h4>
+                        <div class="mb-2">
+                            <a href="{% url 'dashboard:trial_confirm' 3 %}"
+                                class="btn btn-outline-secondary btn-block rounded-0">Take a Trial</a>
+                            <a href="{% url 'main:courses' 3 %}"
+                                class="btn btn-outline-secondary btn-block rounded-0">Get Admission</a>
+                        </div>
+                        <a href="{% url 'main:noorani_qauida' 3 %}" class="small">Get More Info About The Course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of section - 3 courses -->
+
+<!-- section - 4 - Contact Info -->
+<h2 class="text-center text-dark my-4">Get <span class="text-secondary">In Touch</span></h2>
+<section class="bg-primary text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-5 pt-3 py-lg-5">
+                <h3 class="my-4">Contact <span class="text-secondary">Us</span></h3>
+                <!-- contact details -->
+                <p>+92656767787 | +92656767787 </p>
+                <p><strong>Owner's Mail:</strong> Eample1234@gmail.com</p>
+                <p><strong>Skype ID:</strong> Example21234@gmail.com</p>
+                <p><strong>Companies Mail :</strong> Example21234@gmail.com</p>
+                <!-- Social buttons -->
+                <ul class="list-unstyled list-inline icon-list">
+                    <li class="list-inline-item">
+                        <a class="btn btn-circle btn-lg bg-white btn-floating">
+                            <i class="fab fa-facebook-f fa-fw text-primary"> </i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn btn-circle btn-lg bg-white btn-floating">
+                            <i class="fab fa-twitter text-secondary"> </i>
+                        </a>
+                    </li>
+                    <li class="bg-gp list-inline-item">
+                        <a class="btn btn-circle btn-lg bg-white btn-floating btn-google">
+                            <i class="fab fa-google text-danger"> </i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Social buttons -->
+            </div>
+            <div class="col-12 col-sm-12 col-lg-7 p-0 p-sm-4 ">
+                <form class="bg-white form-in-col text-dark p-4" method="POST" action="{% url 'main:contact' %}">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputFName">First Name</label>
+                            <input type="text" required name="f_name" class="form-control" id="inputFName"
+                                placeholder="Nabeel">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLName">Last Name</label>
+                            <input type="text" required name="l_name" class="form-control" id="inputLName"
+                                placeholder="Chuadry">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" required name="user_email" class="form-control" id="inputEmail"
+                            placeholder="nabeelchuadry123@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputMessage">Message</label>
+                        <textarea class="form-control" required name="user_message" id="InputMessage" rows="5"
+                            placeholder="need some help, please ask we would love help you.........."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of section - 4 - Contact Info -->
+
+<!-- section - 5 -->
+<section class="mt-5 text-dark">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 col-sm-12 col-lg-6 px-3 px-sm-5 mb-4 mb-sm-0">
+                <h2 class="h2">Why <span class="text-secondary">Learn</span> Online?</h2>
+                <p>If you are living in any other country so you will have to face difficulty while finding tutor for
+                    your kid. If you are living in non-Muslim country then you must know that there are less number of
+                    Quran academy USA and Quran academy UK. Due to this reason, most of the persons can not teach Quran
+                    to their kids. Therefore, we have resolved your problem by offering online Quran teaching. </p>
+                <a href="{% url 'main:about' %}" class="text-italic"><em>Read More</em> &#8594;</a>
+            </div>
+            <div class="col-lg-6 p-0 p-lg-4 my-4 mb-lg-0">
+                <div class="image-container bg-mosque-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end main content -->
+{% endblock main %}

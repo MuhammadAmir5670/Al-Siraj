@@ -1,0 +1,36 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | {{ course.name }}
+{% endblock title %}
+
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h3 class="h3">Trial</h3>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="alert alert-Info" role="alert">
+                        <h4 class="alert-heading">Info:</h4>
+                        <p>This Trial is a one time process. once you have taken your trial in any of the course
+                            available. you will not be able to take trial again.</p>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <a href="{% url 'dashboard:take_trial' %}" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-success">confirm trial</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

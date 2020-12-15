@@ -1,0 +1,68 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | Courses
+{% endblock title %}
+
+
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="col-3 col-md-4 col-lg-3 col-xl-2">
+                        <img src="{% static 'images/jazzcash-r45.png' %}" width="100%" height="100%" alt="">
+                    </div>
+                    <div class="col-9 col-md-8 col-lg-9 col-xl-10 p-4">
+                        <h3 class="m-0 h3 font-weight-bold text-primary">Pay With Jazzcash</h6>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="data">
+                        <h5 class="text-capitalize h5">Name: <span>{{ course.course_name }}</span></h5>
+                        <h5 class="text-capitalize h5">Price: <span>{{ course.currency }}
+                                {{ course.pricing }} | {{ course.to_PKR }} PKR</span></h5>
+
+                    </div>
+                    <div class="bg-light mt-3 p-3 rounded">
+                        <span class="text-danger">NOTE:</span>
+                        <p>JazzCash Mobile Account can be registered on any Jazz or Warid number. <br>
+                            Biometric-verified Jazz and Warid customers can self-register their Mobile Account simply by
+                            dialing *786#.
+                        </p>
+                    </div>
+
+                    <form class="form-inline mt-3" method="POST">
+                        {% csrf_token %}
+                        <h6 class=" h6 mt-2">Select Payment Method:</h6>
+                        <div class="form-check ml-0 ml-sm-4">
+                            <input class="form-check-input" type="radio" name="Payment_method" id="CardPayment"
+                                value="MPAY" checked>
+                            <label class="form-check-label" for="CardPayment">
+                                <img src="{% static 'images/visa-master-card.png' %}" width="100px"
+                                    alt="Via Visa Or Master Card">
+                            </label>
+                        </div>
+                        <div class="form-check ml-0 ml-sm-4">
+                            <input class="form-check-input" type="radio" name="Payment_method" id="MobilePayment"
+                                value="MWALLET">
+                            <label class="form-check-label" for="MobilePayment">
+                                <img src="{% static 'images/jazzcash-logo.png' %}" width="100px"
+                                    alt="JazzCash Mobile Account">
+                            </label>
+                        </div>
+                        <a href="#!" class="btn btn-secondary ml-auto">Back</a>
+                        <button class="btn btn-success ml-2">Pay</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+400 Bad Request
+{% endblock title %}
+
+
+
+{% block header %}
+
+{% endblock header %}
+
+
+{% block main %}
+
+<div class="container my-5">
+
+    <!-- 404 Error Text -->
+    <div class="text-center pb-5">
+        <div class="error mx-auto" data-text="400">400</div>
+        <p class="lead text-gray-800 mb-5">Bad Request</p>
+
+        {% for message in messages %}
+        {% if forloop.first %}
+        <p class="text-gray-500 mb-0">{{ message }}</p>
+        {% endif %}
+        {% endfor %}
+
+        <a href="{% url 'main:index' %}">&larr; Back to Homepage</a>
+    </div>
+
+</div>
+
+{% endblock main %}

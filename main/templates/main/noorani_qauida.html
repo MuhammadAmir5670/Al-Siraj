@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Islam For Kids
+{% endblock title %}
+
+
+{% block header %}
+<h1 class="h1 hero-heading"><span class="text-secondary">Noorani</span> Qauida</h1>
+<a href="{% url 'dashboard:trial_confirm' 3 %}" class="btn btn-secondary mt-2 mt-sm-0">Start Free Trial</a>
+<a href="{% url 'main:courses' 3 %}" class="btn btn-outline-secondary mt-2 mt-sm-0">Get Admission</a>
+{% endblock header %}
+
+
+{% block navbar-items %}
+<!-- navbar items -->
+<ul class="navbar-nav ml-auto mt-2 mt-lg-0 align-items-lg-center">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'main:index' %}">Home</a>
+    </li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'main:about' %}">About</a></li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" href="#!" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Courses <span class="sr-only">(current)</span></a>
+        <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="{% url 'main:quran_with_tajweed' 1 %}">Quran With Tajweed</a>
+            <a class="dropdown-item" href="{% url 'main:islam_for_kids' 2 %}">Isalm For Kids</a>
+            <a class="dropdown-item" href="{% url 'main:noorani_qauida' 3 %}">Noorani Qaida</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="!#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Fee Chart</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="{% url 'main:courses' 1 %}">Quran With Tajweed</a>
+            <a class="dropdown-item" href="{% url 'main:courses' 2 %}">Isalm For Kids</a>
+            <a class="dropdown-item" href="{% url 'main:courses' 3 %}">Noorani Qaida</a>
+        </div>
+    </li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">Contact</a></li>
+
+    {% if user.is_authenticated %}
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow ml-0 ml-lg-4">
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#!" id="userDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img-profile rounded-circle" style="width: 30px; height: 30px;"
+                src="{{ request.user.student.profile_image.url }}">
+            <span class="ml-2 mr-1 text-gray-600 small" style="font-size: 18px;">{{request.user.username}}</span>
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{% url 'dashboard:dashboard' request.user.id %}">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Dashboard
+            </a>
+            <a class="dropdown-item" href="{% url 'my_account' %}">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+            </a>
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Change Profile Image
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+            </a>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item ml-0 ml-lg-4">
+        <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+        <a href="{% url 'sign_up' %}" class="btn btn-outline-secondary">Register</a>
+    </li>
+    {% endif %}
+
+</ul>
+<!-- navbar items end -->
+{% endblock navbar-items %}
+
+
+{% block main %}
+<!-- start main content -->
+
+<!-- notice -->
+<div class="container mt-4">
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Info!</h4>
+        <p>Our online Quran academy provides the Quran learning programs with full motivation and
+            sincerity. Our relation with our students is very strong because we
+            deal our students with full sincerity. We don’t charge so much. Our demand is minimum and
+            quality of Quran education is high.</p>
+    </div>
+</div>
+
+<!-- section - 1 -->
+<section class="mt-4">
+    <div class="container text-dark">
+        <div class="row">
+            <div class="col-12 col-sm-12 px-3">
+                <div class="card text-left">
+                    <div class="card-header">
+                        <h5 class="h5 mb-2">Learn <span class="text-secondary">Noorani Qauida</span></h5>
+
+                    </div>
+                    <div class="card-body">
+                        <p>Al-Siraj Online Quran Academy has specially designed a short program for people who face
+                            difficulty in reciting quran...
+                        </p>
+                        <h4 class="h4 mb-3">We offer a wide range of high quality of <span
+                                class="text-secondary">teaching Arabic or tajweed</span> and
+                            extra-curricular
+                            activities.
+                            </h3>
+                            <a href="{% url 'sign_up' %}" class="btn btn-secondary">Click Here To Join Us</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section 1 -->
+
+<!-- section 2 -->
+<section class="my-5 my-lg-4 text-dark">
+    <div class="container text-center">
+        <div class="row align-items-center flex-column">
+            <h1 class="h1">Noorani <span class="text-secondary">Qauida</span></h1>
+            <div class="col-12 col-lg-6 image-container bg-mosque-image">
+            </div>
+        </div>
+        <a href="{% url 'dashboard:trial_confirm' 3 %}" class="btn btn-secondary mt-3">Take A Free Trial</a>
+        <a href="{% url 'main:courses' 3 %}" class="btn btn-secondary mt-3">Get Admission</a>
+
+    </div>
+</section>
+<!-- end section 2 -->
+
+
+{% endblock main %}

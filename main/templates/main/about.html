@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+About Al-Siraj
+{% endblock title %}
+
+
+{% block navbar-items %}
+<!-- navbar items -->
+<ul class="navbar-nav ml-auto mt-2 mt-lg-0 align-items-lg-center">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'main:index' %}">Home</a>
+    </li>
+    <li class="nav-item active"><a class="nav-link" href="{% url 'main:about' %}">About <span
+                class="sr-only">(current)</span></a></li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#!" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Courses</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="{% url 'main:quran_with_tajweed' 1 %}">Quran With Tajweed</a>
+            <a class="dropdown-item" href="{% url 'main:islam_for_kids' 2 %}">Isalm For Kids</a>
+            <a class="dropdown-item" href="{% url 'main:noorani_qauida' 3 %}">Noorani Qaida</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="!#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Fee Chart</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="{% url 'main:courses' 1 %}">Quran With Tajweed</a>
+            <a class="dropdown-item" href="{% url 'main:courses' 2 %}">Isalm For Kids</a>
+            <a class="dropdown-item" href="{% url 'main:courses' 3 %}">Noorani Qaida</a>
+        </div>
+    </li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">Contact</a></li>
+
+    {% if user.is_authenticated %}
+    <!-- Nav Item - User Information -->
+    <li class="nav-item dropdown no-arrow ml-0 ml-lg-4">
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#!" id="userDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img-profile rounded-circle" style="width: 30px; height: 30px;"
+                src="{{ request.user.student.profile_image.url }}">
+            <span class="ml-2 mr-1 text-gray-600 small" style="font-size: 18px;">{{request.user.username}}</span>
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="{% url 'dashboard:dashboard' request.user.id %}">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                Dashboard
+            </a>
+            <a class="dropdown-item" href="{% url 'my_account' %}">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+            </a>
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                Change Profile Image
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+            </a>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item ml-0 ml-lg-4">
+        <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+        <a href="{% url 'sign_up' %}" class="btn btn-outline-secondary">Register</a>
+    </li>
+    {% endif %}
+
+</ul>
+<!-- navbar items end -->
+{% endblock navbar-items %}
+
+
+{% block header %}
+<h1 class="h1 display-4">About <span class="text-secondary">Us</span></h1>
+{% endblock header %}
+
+
+{% block main %}
+<!-- start main content -->
+<!-- section - 1 -->
+<section class="mt-4">
+    <div class="container text-dark">
+        <div class="row">
+            <div class="col-12 col-sm-12 px-3">
+                <h2 class="h2 mb-2">About <span class="text-secondary">Al-Siraj</span></h2>
+                <p>Al-siraj online Quran learning Academy is one of the internationally leading Learning Quran and Quran
+                    Teaching institutes in the UK , USA and canada. due to its authenticity, quality of service,
+                    convenient and flexible plans and affordable fee structure. Here you can learn Quran with tajweed by
+                    highly qualified, skilled, well trained and extremely capable Male Quran Tutor and scholar; who is
+                    committed and dedicated to broadcast the essence of the Holy Quran.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section 1 -->
+<!-- section - 2 -->
+<section>
+    <div class="container text-dark">
+        <div class="row">
+            <div class="col-12 col-sm-12 px-3">
+                <h2 class="h2 mb-2">Who <span class="text-secondary">We</span> Are?</h2>
+                <p>Al-siraj online Quran learning Academy has established now as an online Quran Academy organization
+                    for teaching the Quran.We provides opportunity to Learn Quran by just sitting at Home in your free
+                    hours. You will just have to get admission in our Online Quran Academy and have to make a skype ID
+                    (if you already have it then no need to make it again). The students have to take the classes on a
+                    PC/laptop or any android device. My aim to teach the Book of Allah to Muslims all across the world. 
+                    I wish to spread the light of the Holy Book in every corner of the world. Al-siraj online Quran
+                    learning Academy provides you opportunity to Quran Online Reading in affordable range.We have a
+                    unique way Quranic Academy of Learning Quran Reading . I am teaching to students of all age groups.
+                    I am teaching to children, adults and aged persons To Learn Quran . So I know how to deal with all
+                    age groups and will people of any nation. So anyone can feel comfort in their company.If you are
+                    living in any other country so you will have to face difficulty while finding tutor for your kid. If
+                    you are living in non-Muslim country then you must know that there are less number of Quran academy
+                    USA and Quran academy UK. Due to this reason, most of the persons can not teach Quran to their kids.
+                    Therefore, we have resolved your problem by offering online Quran teaching. We are offering equal
+                    opportunities for adults and kids and we have quality teachers for both. We are offering online
+                    classes for your kids and we have teachers from all countries who can teach Quran to kids living in
+                    any country. They can speak different languages so you will not need to worry about language. Due to
+                    the lack of Quran tutors, the Quran learning is badly affected therefore we have provided ways of
+                    online Quran Learning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section 2 -->
+<!-- section - 3 -->
+<section class="mb-4">
+    <div class="container text-dark">
+        <div class="row">
+            <div class="col-12 col-sm-12 px-3">
+                <h2 class="h2 mb-2">Why <span class="text-secondary">Choose</span> Us?</h2>
+                <p>If you are living in any other country so you will have to face difficulty while finding tutor for
+                    your kid. If you are living in non-Muslim country then you must know that there are less number of
+                    Quran academy USA and Quran academy UK. Due to this reason, most of the persons can not teach Quran
+                    to their kids. Therefore, we have resolved your problem by offering online Quran teaching. We are
+                    offering equal opportunities for adults and kids and we have quality teachers for both. We are
+                    offering online classes for your kids and we have teachers from all countries who can teach Quran to
+                    kids living in any country. They can speak different languages so you will not need to worry about
+                    language. Due to the lack of Quran tutors, the Quran learning is badly affected therefore we have
+                    provided ways of online Quran Learning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section 3 -->
+
+<!-- end main content -->
+{% endblock main %}

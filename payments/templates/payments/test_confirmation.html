@@ -1,0 +1,190 @@
+{% extends 'd_base.html' %}
+{% load static %}
+
+
+{% block title %}
+@{{request.user.username}} | Payment
+{% endblock title %}
+
+
+{% block sidebar_items %}
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Board
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-university"></i>
+        <span>Admission</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Cousrses</h6>
+            <a class="collapse-item" href="{% url 'dashboard:courses_data' 1 %}">quran with tajweed</a>
+            <a class="collapse-item" href="{% url 'dashboard:courses_data' 2 %}">islam for kids</a>
+            <a class="collapse-item" href="{% url 'dashboard:courses_data' 3 %}">noorani qauida</a>
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Utilities Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true"
+        aria-controls="collapseUtilities">
+        <i class="fas fa-fw fa-tag"></i>
+        <span>Take Trial</span>
+    </a>
+    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Courses</h6>
+            <a class="collapse-item" href="">quran with tajweed</a>
+            <a class="collapse-item" href="">islam for kids</a>
+            <a class="collapse-item" href="">noorani qauida</a>
+        </div>
+    </div>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    Addons
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false"
+        aria-controls="collapsePages">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Quick Links</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Links</h6>
+            <a class="collapse-item" href="{% url 'main:index' %}">Home</a>
+            <a class="collapse-item" href="{% url 'main:about' %}">About</a>
+            <a class="collapse-item" href="{% url 'dashboard:courses' %}">Courses</a>
+            <a class="collapse-item" href="{% url 'main:contact' %}">Contact</a>
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - Change Password -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'my_account' %}">
+        <i class="fas fa-fw fa-user"></i>
+        <span>Profile</span></a>
+</li>
+
+<!-- Nav Item - Logout -->
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">
+        <i class="fas fa-sign-out-alt fa-sm fa-fw"></i>
+        <span>Logout</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
+
+</ul>
+{% endblock sidebar_items %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <img src="{% static 'images/jazzcash-logo.png' %}" width="100%" height="100%" alt="">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-8 col-xl-9 p-4">
+                        <h2 class="h2 text-danger mb-2 font-weight-bold text-primary">Pay With Jazzcash</h2>
+                        <h6 class="h6">JazzCash HTTP POST Confirmation (Page Redirection) Testing</h6>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="jsformWrapper">
+                        <form name="jsform" method="post"
+                            action="{% url 'payments:payment_confirm' 43 request.user.id %}">
+
+                            <!-- Merchent Details - Info -->
+                            <div class="form-group">
+                                <label for="pp_MerchantID">pp_MerchantID: </label>
+                                <input class="form-control" type="text" name="pp_MerchantID" id="pp_MerchantID"
+                                    value="M12345">
+                            </div>
+
+                            <!-- Tansaction ID -->
+                            <div class="form-group">
+                                <label for="pp_TxnRefNo">pp_TxnRefNo: </label>
+                                <input class="form-control" type="text" name="pp_TxnRefNo" id="pp_TxnRefNo"
+                                    value="T12345">
+                            </div>
+
+                            <!-- Amount To Pay -->
+                            <div class="form-group">
+                                <label for="pp_Amount">pp_Amount: </label>
+                                <input class="form-control" type="text" name="pp_Amount" id="pp_Amount" value="100000">
+                            </div>
+
+                            <!-- Transaction Retreival Reference -->
+                            <div class="form-group">
+                                <label for="pp_RetreivalReferenceNo">pp_RetreivalReferenceNo: </label>
+                                <input class="form-control" type="text" name="pp_RetreivalReferenceNo"
+                                    id="pp_RetreivalReferenceNo" value="RT12345">
+                            </div>
+
+                            <!-- Secure Hash Value -->
+                            <div class="form-group">
+                                <label for="pp_SecureHash">pp_SecureHash: </label>
+                                <input class="form-control" type="text" name="pp_SecureHash" id="pp_SecureHash"
+                                    value="HMACsha256-12345">
+                            </div>
+
+                            <!-- Extras -->
+                            <div class="form-group">
+                                <label for="pp_ResponseCode">pp_ResponseCode: </label>
+                                <input class="form-control" type="text" name="pp_ResponseCode" id="pp_ResponseCode"
+                                    value="000">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pp_ResponseMessage">pp_ResponseMessage: </label>
+                                <input class="form-control" type="text" id="pp_ResponseMessage"
+                                    name="pp_ResponseMessage" value="">
+                            </div>
+
+                            <button type="button" class="btn btn-block btn-success"
+                                onclick="submitForm()">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
+
+
+{% block script %}
+<script>
+    function submitForm() {
+        document.jsform.submit();
+    }
+</script>
+
+{% endblock script %}
