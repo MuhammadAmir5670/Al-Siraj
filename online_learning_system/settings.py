@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "ev6@g-0lwmh26zsqgx9kxf@-4$^h23*1*t&w(@togje&(h_t2r"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["al-siraj.herokuapp.com/", "127.0.0.1"]
 
@@ -148,7 +148,7 @@ LOGIN_URL = "login"
 
 
 # defining media root
-MEDIA_ROOT = os.path.join(BASE_DIR, "static/images/user_profile_images")
+MEDIA_ROOT = os.path.join(BASE_DIR, "static/images/user_profile_images/")
 
 
 # Email Backend system
@@ -156,10 +156,10 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 # Email Configuration
 EMAIL_USE_TLS = True
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.mailgun.org"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "muhammadamir5670@gmail.com"
-EMAIL_HOST_PASSWORD = "yrjrkiqiptqjpnnh"
-DEFAULT_FROM_EMAIL = "muhammadamir5670@gmail.com"
+EMAIL_HOST_USER = "postmaster@sandbox35ba75146b614b9b9c88dadd2f44f814.mailgun.org"
+EMAIL_HOST_PASSWORD = "88f913b59eabbc4fa3b1e74a4cd31290-e5da0167-21f7472a"
+DEFAULT_FROM_EMAIL = "al.siraj5670@gmail.com"
 
 django_heroku.settings(locals())

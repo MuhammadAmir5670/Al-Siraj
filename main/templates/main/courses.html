@@ -110,7 +110,7 @@ About Al-Siraj
                         free for two days.</p>
                 </div>
             </div>
-            <table class="table table-bordered table-light">
+            <table class="table table-bordered table-responsive table-light">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -147,7 +147,7 @@ About Al-Siraj
                         free for two days.</p>
                 </div>
             </div>
-            <table class="table table-bordered table-light">
+            <table class="table table-bordered table-responsive table-light">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -161,8 +161,8 @@ About Al-Siraj
                     {% for course_in_country in courses.EU %}
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
-                        <td>{{ course_in_country.classes_per_week }} Minutes</td>
-                        <td>{{ course_in_country.class_duration }}</td>
+                        <td>{{ course_in_country.classes_per_week }} days per week</td>
+                        <td>{{ course_in_country.class_duration }} Minutes</td>
                         <td>{{ course_in_country.pricing }} €</td>
                         <td>{{ course_in_country.to_PKR }} Rupees</td>
                         <td><a href="{% url 'main:contact' %}?id={{course_in_country.id}}">Get Admission</a></td>
@@ -184,7 +184,7 @@ About Al-Siraj
                         free for two days.</p>
                 </div>
             </div>
-            <table class="table table-bordered table-light">
+            <table class="table table-bordered table-responsive table-light">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -198,8 +198,8 @@ About Al-Siraj
                     {% for course_in_country in courses.CA %}
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
-                        <td>{{ course_in_country.classes_per_week }} Minutes</td>
-                        <td>{{ course_in_country.class_duration }}</td>
+                        <td>{{ course_in_country.classes_per_week }} days per week</td>
+                        <td>{{ course_in_country.class_duration }} Minutes</td>
                         <td>{{ course_in_country.pricing }} $</td>
                         <td>{{ course_in_country.to_PKR }} Rupees</td>
                         <td><a href="{% url 'main:contact' %}?id={{course_in_country.id}}">Get Admission</a></td>
@@ -221,7 +221,7 @@ About Al-Siraj
                         free for two days.</p>
                 </div>
             </div>
-            <table class="table table-bordered table-light">
+            <table class="table table-bordered table-responsive table-light">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -235,8 +235,8 @@ About Al-Siraj
                     {% for course_in_country in courses.UK %}
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
-                        <td>{{ course_in_country.classes_per_week }} Minutes</td>
-                        <td>{{ course_in_country.class_duration }}</td>
+                        <td>{{ course_in_country.classes_per_week }} days per week</td>
+                        <td>{{ course_in_country.class_duration }} Minutes</td>
                         <td>{{ course_in_country.pricing }} £</td>
                         <td>{{ course_in_country.to_PKR }} Rupees</td>
                         <td><a href="{% url 'main:contact' %}?id={{course_in_country.id}}">Get Admission</a></td>
