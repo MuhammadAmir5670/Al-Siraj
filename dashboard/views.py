@@ -105,7 +105,7 @@ def contact(request):
                 "A-Siraj Help Center",
                 message,
                 from_email=EMAIL_HOST_USER,
-                recipient_list=["nabeelrana892gmail.com"],
+                recipient_list=["nabeelrana892@gmail.com"],
             )
             if status != 0:
                 messages.success(
