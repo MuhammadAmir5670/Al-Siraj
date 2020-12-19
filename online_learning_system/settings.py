@@ -162,4 +162,11 @@ EMAIL_HOST_USER = "postmaster@sandbox35ba75146b614b9b9c88dadd2f44f814.mailgun.or
 EMAIL_HOST_PASSWORD = "88f913b59eabbc4fa3b1e74a4cd31290-e5da0167-21f7472a"
 DEFAULT_FROM_EMAIL = "al.siraj5670@gmail.com"
 
+# Email Configuration
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "muhammadamir5670@gmail.com"
+EMAIL_HOST_PASSWORD = "yrjrkiqiptqjpnnh"
+DEFAULT_FROM_EMAIL = "muhammadamir5670@gmail.com"
 django_heroku.settings(locals())
